@@ -174,4 +174,23 @@ contract Fund is AutomationCompatibleInterface{
     
    } 
 
+   /**
+    * @notice Getter Functions
+    */
+
+   //get the number of all campaigns
+    function getAllCampaigns() public view returns (uint256){
+      return campaignCount.length;
+    }
+
+   //get campaign
+   function getCampaignName(address creator) public view returns (string memory) {
+      return campaigns[creator].name;
+   } 
+
+   //get campaign balance
+   function getCampaignBalance(address creator) public view returns (uint256){
+      return campaigns[creator].balance;
+   }
+
 }
