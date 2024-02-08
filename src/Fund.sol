@@ -126,9 +126,9 @@ contract Fund is AutomationCompatibleInterface{
         address campaign = campaignCount[campaignIndex];
         uint256 balance = campaigns[campaign].balance;
         uint deadline = campaigns[campaign].deadline;
-        uint deadlineInMinutes = deadline * 1 minutes;
+        uint deadlineInDays = deadline * 1 days;
 
-        upkeepNeeded = (block.timestamp - campaigns[campaign].lastTimeStamp) > deadlineInMinutes && balance <= campaigns[campaign].fundingGoal;
+        upkeepNeeded = (block.timestamp - campaigns[campaign].lastTimeStamp) > deadlineInDays && balance <= campaigns[campaign].fundingGoal;
         performData = checkData;
         
       }

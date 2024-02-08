@@ -1,66 +1,13 @@
-## Foundry
+## CrowdFunding Contract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+# Overview
+This is a smart contract for a crowdfunding platform built on the Ethereum blockchain. It allows users to create campaigns, fund them, and withdraw funds if the campaign is successful or if the deadline has passed without reaching the funding goal.
+It uses chainlink Automation to achieve this
 
-Foundry consists of:
-
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+# Features
+- Campaigns can be created with a name, description, funding goal, and deadline.
+- Users can fund campaigns with Ether, as long as the amount is equal to or greater than a minimum amount (5 USD).
+- If a campaign reaches its funding goal before the deadline, it is considered successful and users can withdraw their funds.
+- If the deadline is reached and the funding goal has not been met, funds are sent back to funders.
+- The contract uses Chainlink's Price Feeds to convert the amount of Ether sent to USD
+- The contract also uses chainlink keepers for automating deadlines
